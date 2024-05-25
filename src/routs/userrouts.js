@@ -312,8 +312,8 @@ routs.post('/userregister', async (req, res) => {
                 image: image.secure_url
             });
             console.log("Data before save", userdata);
-            const data = await userdata.save();
-            const token = data.userauthanticat();
+            // const data = await userdata.save();
+            const token = userdata.userauthanticat();
             res.cookie("digital_oasis", token, {
                 // expires: new Date(Date.now() + 990000),
                 httpOnly: true,
@@ -336,10 +336,10 @@ routs.get('/userlogin', async (req, res) => {
     }
 });
 routs.post('/userlogin', async (req, res) => {
-    const { email, password } = req.body;
-    console.log("Password", password);
-    console.log("Email", email);
     try {
+        const { email, password } = req.body;
+        console.log("Password", password);
+        console.log("Email", email);
         const userdb = await user.findOne({ email });
         if (email === userdb.email) {
             console.log("Correct Email");

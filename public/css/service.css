@@ -45,9 +45,6 @@
     padding: 0vh 0vh 0vh 5vh;
 }
 @media (max-width: 600px) {
-    .services{
-        background-color: aqua;
-    }
     #servicesection p{
         padding: 2vh 5vh;
     }
