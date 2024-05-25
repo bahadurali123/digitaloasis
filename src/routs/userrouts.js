@@ -251,7 +251,7 @@ routs.post('/userregister', async (req, res) => {
     try {
         const { name, email, password } = req.body;
         let isError = false; // Variable to track errors
-        console.log("0 Path:", name, email, password)
+        console.log("Inputs:", name, email, password)
 
         // .....diskStorage.....
         // const userlocalpath = req.file.path;
@@ -265,11 +265,12 @@ routs.post('/userregister', async (req, res) => {
             console.log("File buffer is incorrect:");
             isError = true;
         }
-        
+
         // .....diskStorage.....
         // const image = await uploadoncloudinary(userlocalpath);
         // .....memoryStorage.....
         const image = await uploadBufferToCloudinary(fileBuffer);
+        console.log("Cloudinary response:", image);
         
         // .....First Namd validation.....
         if ((name == "" || (!isNaN(name))) || (name.length > 20 || name.length < 4)) {
@@ -303,7 +304,7 @@ routs.post('/userregister', async (req, res) => {
                 message: "Invalid user data. Please try again."
             });
         } else {
-            console.log("fields are required 2");
+            console.log("fields are exist");
             const userdata = await new user({
                 name: name,
                 email: email,
