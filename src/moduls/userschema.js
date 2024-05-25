@@ -38,8 +38,11 @@ userschema.methods.userauthanticat = async function () {
         console.log(this._id);
         const usertoken = await JsonWebToken.sign({ _id: this._id.toString() }, process.env.USER_AUTH_TOKEN);
         this.tokens = this.tokens.concat({ token: usertoken });
+        const tokens = this.tokens;
         console.log("This:", this);
-        await this.save();
+        console.log("Tokens:", tokens);
+        const updated = await this.save();
+        console.log("Updated register:", updated);
         console.log(usertoken);
         return usertoken;
     } catch (error) {
