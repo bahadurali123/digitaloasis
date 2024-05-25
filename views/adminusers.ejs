@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/admincss/adminhome.css">
+    <title>Users</title>
+</head>
+<body>
+    <%- include('./admin/partials/header.ejs')-%>
+    <div id="admincontaner">
+        <div id="contaner">
+            <div class="commentscontaner">
+                <div class="titlesection">user profiles</div>
+                <div id="comments">
+                <table id="blogsection">
+                    <thead class="tableheadings">
+                        <tr>
+                            <th>image</th>
+                            <th>name</th>
+                            <th>email</th>
+                            <th>id</th>
+                            <th>likes</th>
+                            <th>comments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebodycomments">
+                        <% users.forEach(user=>{ %>
+                            <tr>
+                                <td><img class="userimages" src="<%= user.image %>" alt="image"></td>
+                                <td><%= user.name %></td>
+                                <td><%= user.email %></td>
+                                <td><%= user._id %></td>
+                                <% const userlikes= likes.filter( like=> like.userId.equals(user._id)) %>
+                                <td><%= userlikes.length %></td>
+                                <% const usercoments= comments.filter( comment=> comment.name === user.name) %>
+                                <td><%= usercoments.length %></td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/script/adminheader.js"></script>
+</html>

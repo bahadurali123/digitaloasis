@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/clintsideheader.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <title>Contact</title>
+</head>
+<body>
+    <%- include('partials/nav.ejs', {user:authuser})-%>
+    <p id="contact-welcome">welcome to contact section</p>
+    <div id="contactpage">
+        <div id="contactcontaner">
+            <div class="contactsubcontaner messagecontaner">
+                <h3 id="messhadding">Drop the Message</h3>
+                <form id="form" action="" method="post">
+                    <p class="messitems">Fullname</p>
+                    <input class="messitems" type="text" name="fullname">
+                    <p class="messitems">Email</p>
+                    <input class="messitems" type="email" name="email" id="">
+                    <p class="messitems">Number</p>
+                    <input class="messitems" type="tel" name="number" id="">
+                    <p class="messitems">Message</p>
+                    <input class="messitems" type="text" name="message" id="">
+                    <button class="messitems btn" type="submit">Submit</button>
+                </form>
+            </div>
+            <div class="contactsubcontaner">
+                <div id="address">
+                    <p class="subheding">Office Address</p>
+                    <div class="contactitems">
+                        <% address.forEach(add=>{ %>
+                            <%- add.addresimage %>&nbsp;&nbsp;
+                            <a class="contactanc" href="<%= add.addresurl %>" target="_blank" rel="noopener noreferrer"><%= add.address %></a>
+                        <% }) %>
+                        <!-- <i class="bi bi-clock"></i>
+                        <a class="contactanc" href="http://" target="_blank" rel="noopener noreferrer">Balmumcu, Bestekar Şevki Bey Sk. NO:56, 34349 Beşiktaş/İstanbul, Türkiye</a> -->
+                    </div>
+                </div>
+                <div>
+                    <p class="subheding">Contact With</p>
+                    <div>
+                        <% contact.forEach(contacts=>{ %>
+                            <div class="contactitems"><%- contacts.contactimage %>&nbsp;&nbsp;<a class="contactanc" href="<%= contacts.contacturl %>"><%= contacts.contacttextadderss %></a></div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mapcontaner">
+            <a id="map" href="#"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.826310802068!2d29.015400220440505!3d41.05704798282876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab5d70267668b%3A0x882503c62c07c891!2sDOME%2BPARTNERS!5e1!3m2!1sen!2s!4v1701929047218!5m2!1sen!2s" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></a>
+        </div>
+    </div>
+    <%- include('partials/forter.ejs', {socialdatas:socialdatas, contactdatas:contact})-%>
+</body>
+<script src="/script/script.js"></script>
+</html>

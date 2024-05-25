@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/clintsideheader.css">
+    <link rel="stylesheet" href="/css/service.css">
+    <title>Services</title>
+</head>
+
+<body>
+    <%- include('partials/nav.ejs', {user:authuser})-%>
+        <div id="servicesection">
+            <h2>Healthy Living Spaces</h2>
+            <p>Prioritize the well-being of your family with our focus on creating healthy living environments. We integrate natural elements and promote indoor air quality.</p>
+            <div class="serviceslist">
+                <div class="services">
+                    <div class="servicdiscription"><h2>Natural Ventilation</h2><p>Design spaces that promote natural airflow.</p></div>
+                    <div class="serviceimg"><img src="https://i0.wp.com/www.ecomena.org/wp-content/uploads/2014/12/natural-ventilation.png" alt="image"></div>
+                </div>
+                <div class="services">
+                    <div class="serviceimg"><img src="https://www.greenbiz.com/sites/default/files/images/articles/featured/singaporeesbprofessionalsstock-min.jpg" alt="image"></div>
+                    <div class="servicdiscription"><h2>Greenery Integration</h2><p>Integrate indoor plants for improved air quality.</p></div>
+                </div>
+                <div class="services">
+                    <div class="servicdiscription"><h2>Biophilic Design</h2><p>Embrace designs inspired by nature for a calming atmosphere.</p></div>
+                    <div class="serviceimg"><img src="https://d1tm14lrsghf7q.cloudfront.net/public/media/314/conversions/79209_00title_mod_citi_wealth_hub_gardenlounge_1-cover.jpg" alt="image"></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="servicesection">
+            <h2>Water Conservation</h2>
+            <p>Conserve water resources with our water-efficient solutions. From rainwater harvesting to smart irrigation, we've got your water needs covered.</p>
+            <div class="serviceslist">
+                <div class="services">
+                    <div class="servicdiscription"><h2>Rainwater Harvesting</h2><p>Collect and reuse rainwater for landscaping.</p></div>
+                    <div class="serviceimg"><img src="https://as1.ftcdn.net/v2/jpg/03/38/41/62/1000_F_338416217_cCjZWvh1YlhzaaUH8EI5S72GH7g7ISWk.jpg" alt="image"></div>
+                </div>
+                <div class="services">
+                    <div class="serviceimg"><img src="https://www.renkeer.com/wp-content/uploads/2022/08/smart-irrigation-tech.jpg" alt="image"></div>
+                    <div class="servicdiscription"><h2>Smart Irrigation</h2><p>Optimize water usage for your garden.</p></div>
+                </div>
+                <div class="services">
+                    <div class="servicdiscription"><h2>Water Recycling</h2><p>Implement systems to recycle and reuse water.</p></div>
+                    <div class="serviceimg"><img src="https://images.squarespace-cdn.com/content/v1/5e8f2430609470240c1af8ca/1594886712103-OWH0VKVGEO34KO911OC3/Siza+Water+Recycle+Water+layout+june+19.jpg?format=1000w" alt="image"></div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    <%- include('partials/forter.ejs', {socialdatas:socialdatas, contactdatas:contact})-%>
+</body>
+<script src="/script/script.js"></script>
+</html>

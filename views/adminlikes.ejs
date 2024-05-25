@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/admincss/adminhome.css">
+    <title>Like</title>
+</head>
+<body>
+    <%- include('./admin/partials/header.ejs')-%>
+    <div id="admincontaner">
+        <div id="contaner">
+            <div class="commentscontaner">
+                <div class="titlesection">likes</div>
+                <div id="comments">
+                <table id="blogsection">
+                    <thead class="tableheadings">
+                        <tr>
+                            <th>image</th>
+                            <th>name</th>
+                            <th>like / dislike</th>
+                            <th>blog</th>
+                            <th>blogimage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebodycomments">
+                        <% likes.forEach(like=>{ %>
+                            <tr>
+                                <% const likeduser= users.filter( user=> user._id.equals(like.userId)) %>
+                                <% likeduser.forEach(a=>{ %>
+                                    <td><img class="userimages" src="<%= a.image %>" alt="user"></td>
+                                    <td><%= a.name %></td>
+                                    <% }); %>
+                                    
+                                    <td><%= like.likes %></td>
+                                    <% const likedpost= blogs.filter( blog=> blog._id.equals(like.postId)) %>
+                                    <% likedpost.forEach(a=>{ %>
+                                <td><%= a.blogtitle.substring(0, 50) %></td>
+                                <td><img class="blogimages" src="<%= a.blogimage %>" alt="image"></td>
+                                <% }); %>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/script/adminheader.js"></script>
+</html>

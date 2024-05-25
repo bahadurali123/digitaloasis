@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/admincss/adminhome.css">
+    <title>Dash borde</title>
+</head>
+<body>
+    <%- include('partials/header.ejs')-%>
+    <div id="admincontaner">
+        <div id="subcontaner1">
+            <a href="/admin/likes" class="user-comment-mess-like">
+                <div class="iconsection">
+                    <div class="title">likes</div>
+                    <div class="situation"><%= likes.length %></div>
+                </div>
+                <div class="icon"><i class="bi bi-hearts"></i></div>
+            </a>
+            <a href="/admin/messages" class="user-comment-mess-like">
+                <div class="iconsection">
+                    <div class="title">Messages</div>
+                    <div class="situation"><%= message.length %></div>
+                </div>
+                <div class="icon"><i class="bi bi-chat-left-dots-fill"></i></i></div>
+            </a>
+            <a href="/admin/users" class="user-comment-mess-like">
+                <div class="iconsection">
+                    <div class="title">Users</div>
+                    <div class="situation"><%= users.length %></div>
+                </div>
+                <div class="icon"><i class="bi bi-people-fill"></i></div>
+            </a>
+                <a href="/admin/comments" class="user-comment-mess-like">
+                <div class="iconsection">
+                    <div class="title">Comments</div>
+                    <div class="situation"><%= comments.length %></div>
+                </div>
+                <div class="icon"><i class="bi bi-chat"></i></div>
+            </a>
+
+        </div>
+        <div id="subcontaner2">
+            <div class="posts-pageview">
+                <table id="blogsection">
+                    <div class="titlesection">latest blog</div>
+                    <tr>
+                        <th>image</th>
+                        <th>title</th>
+                        <th><i class="bi bi-heart-fill"></i></th>
+                        <th><i class="bi bi-chat"></th>
+                    </tr>
+                    <% blogs.forEach(blog=>{ %>
+                        <tr>
+                            <td class="blog-img"><img class="blogimages" src="<%= blog.blogimage %>" alt="image"></td>
+                            <td class="blog-titles"><%= blog.blogtitle.substring(0, 30).concat('...') %></td>
+                            <!-- <td><%= blog._id %></td> -->
+                            <% const blogLikes = likes.filter(like => like.postId.equals(blog._id)); %>
+                            <td class="icons"><%= blogLikes.length %></td>
+                            <% const blogComments = comments.filter(comment => comment.postId.equals(blog._id)); %>
+                            <td class="icons"><%= blogComments.length %></td>
+                        </tr>
+                        <% }); %>
+                </table>
+            </div>
+            <div class="posts-pageview">
+                <table id="pageviews">
+                    <div class="titlesection">
+                        <p class="title">Page Views</p>
+                        <i class="bi bi-eye-fill"></i>
+                    </div>
+                    <tr>
+                        <th>
+                            pages
+                        </th>
+                        <th>
+                            veiws
+                        </th>
+                    </tr>
+                    <% visitor.forEach(visit=>{ %>
+                        <tr>
+                            <td><%= visit.page %></td>
+                            <td><%= visit.visitors %></td>
+                        </tr>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/script/adminheader.js"></script>
+</html>

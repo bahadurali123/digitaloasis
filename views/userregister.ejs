@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/form.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="form">
+        <h3 class="h3">Register Now at Digital Oasis.</h3>
+        <% if(message){ %>
+            <p class="error">"<%= message %>"</p>
+        <% } %>
+        <form action="/userregister"  enctype="multipart/form-data" id="myform"  class="" method="post">
+        <!-- <form action="/userregister" id="myform"  class="" method="post"> -->
+            <div id="itemsection">
+                <div class="items">
+                    <span>Name:</span>
+                <input type="text" placeholder="Name" name="name" class="inputs" id="name" autocomplete="off">
+                </div>
+                <div class="items">
+                    <span>Email:</span>
+                <input type="email" placeholder="Email" name="email" class="inputs" id="email" autocomplete="off">
+                </div>
+                <div class="items">
+                    <span>Password:</span>
+                <input type="password" placeholder="Password" name="password" class="inputs" id="password" autocomplete="off">
+                </div>
+                <div class="items">
+                    <span>picture&nbsp;URL:</span>
+                    <input type="file" name="image" id="image" autocomplete="off">
+                    <!-- <input type="text" placeholder="picture URL" name="image" class="inputs" id="image" autocomplete="off"> -->
+                </div>
+            </div>
+            <button type="submit" class="subbtn" id="btn">Submet</button>
+        </form>
+    </div>
+</body>
+</html>

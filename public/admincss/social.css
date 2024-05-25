@@ -1,0 +1,146 @@
+#editblog{
+    display: flex;
+    align-items: center;
+}
+.contaner{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.sociallist, .teamlist, .contactlist, .bloglist{
+    width: 55vw;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.socialitems, .teamitems, .contantitems, .blogitems{
+    width: 95%;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.blogitems .teamimage, .blogitems .dates{
+    width: 25%;
+}
+.blogitems .titles{
+    width: 30%;
+}
+.blogitems .icons{
+    width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.socialform, .teamform, .contactform, .blogform{
+    width: 30vw;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.blogs{
+    width: 95%;
+}
+#blogscontaner{
+    width: 100%;
+    height: 85vh;
+    overflow: scroll;
+}
+#blogdiscription{
+    height: 20vh;
+}
+.formitems{
+    margin: 5px;
+}
+.add{
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px 1px #8c8c8c;
+}
+.btn{
+    width: 15px;
+    height: 15px;
+    /* border: 1px solid black; */
+    padding: 5px;
+    margin: 5px;
+}
+.icon{
+    width: 15px;
+    height: 15px;
+}
+.subbtn{
+    width: 75px;
+    height: 25px;
+    padding: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.subbtn:hover{
+    background-color: red;
+    cursor: pointer;
+}
+
+
+/* team css */
+.teamimage{
+    width: 100px;
+    height: 50px;
+}
+
+
+/* address */
+.address-container{
+    width: 95%;
+    padding: 10px;
+    /* border-bottom: 1px solid black;    */
+}
+.addressitems{
+    width: 90%;
+    height: auto;
+    padding: 5px;
+    margin: 5px;
+}
+@media (max-width: 850px ) {
+    .contaner{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .sociallist, .teamlist, .contactlist, .bloglist{
+        width: 90%;
+        margin: 4vh 2vh;
+        box-shadow: 2px 2px 10px 0px #868686;
+        border: none;
+        border-radius: 15px;
+        padding: 4vh 1vw;
+    }
+    .socialform, .teamform, .contactform, .blogform{
+        width: 80%;
+        margin: 4vh;
+        box-shadow: 2px 2px 10px 0px #868686;
+        border: none;
+        border-radius: 15px;
+    }
+}
+@media (max-width:650px) {
+    .sociallist, .teamlist, .contactlist, .bloglist{
+        font-size: 12px;
+    }
+    .blogitems .titles{
+        padding-left: 3px;
+    }
+    .teamitems .titles{
+        width: 40%;
+        padding-left: 3px;
+    }
+    .teamimage{
+        width: 75px;
+        height: 40px;
+    }
+    .btn{
+        padding: 0px;
+        margin: 3px;
+    }
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/form.css">
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="form">
+        <h3 class="h3">Register Now</h3>
+        <% if(message){ %>
+            <p class="error">"<%= message %>"</p>
+        <% } %>
+        <form action="register" id="myform" method="post">
+            <div id="itemsection">
+                <div class="items">
+                    <span>Name:</span>
+                    <input type="text" placeholder="Name" name="name" class="inputs" id="name">
+                </div>
+                <div class="items">
+                    <span>Email:</span>
+                    <input type="email" placeholder="Email" name="email" class="inputs" id="email">
+                </div>
+                <div class="items">
+                    <span>Password:</span>
+                    <input type="password" placeholder="Password=abc+ABC+#$%+123" name="password" class="inputs" id="password">
+                </div>
+                <div class="items">
+                    <span>Phone:</span>
+                    <input type="tel" placeholder="Phone Number" name="number" class="inputs" id="tel">
+                </div>
+                <div class="items">
+                    <span>Address:</span>
+                    <input type="text" placeholder="Address" name="address" class="inputs" id="address">
+                </div>
+                <div id="gender" class="items">
+                    <div><input type="radio" name="gender" class="radio" id="mail" value="Mail"><span>Mail</span></div>
+                    <div><input type="radio" name="gender" class="radio" id="fmail" value="Feemail"><span>Feemail</span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="subbtn" id="btn">Submet</button>
+        </form>
+    </div>
+    <script>
+        console.log("Script is run")
+        async function asyncronus(){
+            // await formsubmet();
+            await document.getElementById("myform").addEventListener("submit", async function (event) {
+            // event.preventDefault();  // Prevents the default form submission for now
+        
+            if (await formsubmet()) {
+                // this.submit();  // Submits the form if validation passes
+                document.getElementById("myForm").submit();
+            }
+        });
+    }
+         function formsubmet() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let tel = document.getElementById("tel").value;
+            let address = document.getElementById("address").value;
+            let mail = document.getElementById("mail");
+            let fmail = document.getElementById("fmail");
+            
+            // .....First Namd validation.....
+            if ((name == "" || (!isNaN(name))) || (name.length > 20 || name.length < 4)) {
+                alert("Name is in correct", fname);
+                   console.log("Name is in correct:", name);
+                   return false;
+                }
+                
+                // .....Email validation.....
+                if ((email == "" || email.length > 30) || (((email.charAt(email.length - 4) != ".") && ((email.charAt(email.length - 3)) != ".")))) {
+                    alert("Email is incorrect:", email);
+                    return false;
+                }
+                if ((email.indexOf("@") < 1) || ((email.indexOf("@") + 6) > (email.indexOf(".")))) {
+                    console.log("Email setp2 is incorrect:", email, ":", email.indexOf("@"));
+                    return false;
+                }
+                
+                // .....Password validation.....
+                if ((password == "" || password.length < 8)) {
+                    alert("Password is incorrect:", password);
+                    return false;
+                }
+                // check UPPERCASE lowercase Numbers and spaces cheractors
+                if ((!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[!@#$%^&*/(),.?":{}|<>]/.test(password) || !/[0-9]/.test(password))) {
+                    console.log("Password 2 is incorrect:", password);
+                    return false;
+                }
+                // .....Phone No validation.....
+                if ((tel == "" || tel.length != 10) || (tel.charAt(tel.length - 10) != "3") || (isNaN(tel))) {
+                    console.log("Phone No is incorrect:", tel);
+                    return false;
+                }
+                
+                // .....Address validation.....
+                if ((address == "" || address.length < 10)) {
+                    alert("Plese enter correct address!");
+                    return false;
+                }
+                // .....Check box validation.....
+                if ((mail.checked == true && fmail.checked == true || (mail.checked == false && fmail.checked == false))) {
+                    alert("Select opetion from Mail and Femail!");
+                    return false;
+                }
+                const pgender = mail.checked == true ? mail.value : fmail.value;
+                
+                // .....Correct Answers list.....
+                console.log("Name:", name);
+                console.log("Email Address:", email);
+                console.log("Password:", password);
+                console.log("Phone No:", tel);
+                console.log("Gender:", pgender);
+                console.log("Address:", address);
+                
+                return false;
+            }
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/admincss/adminhome.css">
+    <title>Message</title>
+</head>
+<body>
+    <%- include('./admin/partials/header.ejs')-%>
+    <div id="admincontaner">
+        <div id="contaner">
+            <div class="commentscontaner">
+                <div class="titlesection">messages</div>
+                <div id="comments">
+                <table id="blogsection">
+                    <thead class="tableheadings">
+                        <tr>
+                            <th>name</th>
+                            <th>email</th>
+                            <th>number</th>
+                            <th>message</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebodycomments">
+                        <% message.forEach(mesg=>{ %>
+                            <tr>
+                                <td><%= mesg.fullname %></td>
+                                <td><%= mesg.email %></td>
+                                <td><%= mesg.number %></td>
+                                <td><%= mesg.message %></td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/script/adminheader.js"></script>
+</html>

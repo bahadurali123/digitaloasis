@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/admincss/social.css">
+    <!-- <link rel="stylesheet" href="../public/css/contact.css"> -->
+    <title>Contact</title>
+</head>
+<body>
+    <%- include('./admin/partials/header.ejs')-%>
+    <div class="contaner">
+    <div class="contactlist">
+        <!-- <div class="socialitems">
+            <a class="btn add" href=""><i class="bi bi-plus"></i></a>
+        </div> -->
+        <h2>Contact</h2>
+        <div class="contantitems">
+            <div class="icon">Images</div>
+            <div>URL</div>
+            <div>S Address</div>
+            <div>
+                <a class="btn" href="#"><i class="bi bi-trash"></i></a>
+                <a class="btn" href="#"><i class="bi bi-pencil-square"></i></a>
+            </div>
+        </div>
+        <% contact.forEach(items=>{ %>
+            <div class="contantitems">
+                <div class="icon"><%- items.contactimage %></div>
+                <div><%= items.contacturl %></div>
+                <div><%= items.contacttextadderss %></div>
+                <div>
+                    <a class="btn" href="/admin/contact/delete/<%= items.id %>"><i class="bi bi-trash"></i></a>
+                    <a class="btn" href="/admin/contact/edit/<%= items.id %>"><i class="bi bi-pencil-square"></i></a>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <form class="contactform" action="" method="post">
+        <h3 class="formitems">Contact Section</h3>
+        <p class="formitems">Icon</p>
+        <input class="formitems" type="text" name="icon" id="" autocomplete="off" required>
+        <p class="formitems">URL</p>
+        <input class="formitems" type="text" name="url" id="" autocomplete="off" required>
+        <p class="formitems">you wnt to see</p>
+        <input class="formitems" type="text" name="content" autocomplete="off" required>
+        <button class="formitems subbtn" type="submit">Submit</button>
+    </form>
+</div>
+</body>
+<script src="/script/adminheader.js"></script>
+</html>

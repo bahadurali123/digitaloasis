@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/clintsideheader.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <title>Showblog</title>
+</head>
+
+<body>
+    <%- include('partials/nav.ejs', {user:authuser})-%>
+        <div id="blogwelcome">
+            <p>🌟 Welcome to our Digital Oasis! 🌟 Here at [Digital Oasis], we believe in the power of words, ideas, and
+                stories. As you step into our virtual circle, you're not just a visitor: you're a our guest to begin on
+                a journey of discovery, inspiration, and connection.Our pixels hold the promise of endless exploration,
+                and we invite you to make yourself at home in the boundless world of our blog.</p>
+        </div>
+        <div id="blogcontaner">
+            <div>
+                <div id="blogsection" class="showblog">
+                    <div id="showblogfunctions">
+                        <p class="showblogitems">
+                            <%= showblog.blogcreatedAt.toLocaleDateString() %>
+                        </p>
+                        <a class="showblogitems" href="">
+                            <%= showblog.blogsource %>
+                        </a>
+                        <p class="showblogitems">
+                            <%= showblog.blogauther %>
+                        </p>
+                        <!-- <a href="/showblog/<%= showblog.blogtitle %>/like" aria-checked="true"><button name="true" id="like">Like</button></a> -->
+                        <form action="/showblog/<%= showblog.blogtitle %>/like" method="post">
+                            <% if(likesituation){ %>
+                                <button class="likebtn likesituation<%= likesituation %>" type="submit" name="likedislike" value="like">
+                                    <i class="bi bi-heart"></i>&nbsp;<span><%= likes.length %></span>
+                                    <!-- <input type="radio" name="situation" value="true" id=""> -->
+                                </button>
+                                <% }else{%>
+                                    <button class="likebtn " type="submit" name="likedislike" value="like">
+                                        <i class="bi bi-heart"></i>&nbsp;<span><%= likes.length %></span>
+                                        <!-- <input type="radio" name="situation" value="true" id=""> -->
+                                    </button>
+                                    <% } %>
+                        </form>
+                    </div>
+                    <img id="showblogimg" src="<%= showblog.blogimage %>" alt="">
+                    <h2 id="showblogheadding">
+                        <%= showblog.blogtitle %>
+                    </h2>
+                    <p id="showblogdisc">
+                        <%= showblog.blogdiscription %>
+                    </p>
+                </div>
+                <div class="comments">
+                    <!-- views/comments.ejs -->
+                    <h2 class="commentshed"><span>
+                            <%= comments.length %>
+                        </span>&nbsp;Comments</h2>
+                    <form class="commentform" action="/blog/<%= showblog._id %>/comments" method="POST">
+                        <textarea class="inputs" name="content" placeholder="Add a Comment" rows="4"
+                            required></textarea><br>
+                        <div class="btnsection">
+                            <button type="submit" class="subbtn">Comment</button>
+                        </div>
+                    </form>
+                    <div>
+                        <% comments.forEach(comment=> { %>
+                            <div class="commentno">
+                                <div class="commentdata">
+                                    <p><strong>
+                                            <%= comment.name %>
+                                        </strong></p>&nbsp;&nbsp;&nbsp;
+                                    <p><small>
+                                            <%= new Date(comment.createdAt).toLocaleString() %>
+                                        </small></p>
+                                </div>
+                                <p>
+                                    <%= comment.content %>
+                                </p>
+                            </div>
+                            <% }); %>
+                    </div>
+                </div>
+            </div>
+            <div id="blogsidebar">
+                    <!-- <div id="searchsection"> -->
+                        <form id="searchsection" action="/blog/search" method="post">
+                            <input type="search" name="search" id="search" class="search">
+                            <div id="searchicon">
+                                <!-- <a href="/blog/"><i class="bi bi-search"></i></a> -->
+                                <button class="searchbtn" type="submit"><i class="bi bi-search"></i></button>
+                            </div>
+                        </form>
+                    <!-- </div> -->
+                    <div class="nav">
+                        <ul>
+                            <li>
+                                <a href="">category</a>
+                                <ul class="dropdown">
+                                    <li><a href="/blog/integration">integration</a></li>
+                                    <li><a href="/blog/ventilation">ventilation</a></li>
+                                    <li><a href="/blog/rainwater">rainwater</a></li>
+                                    <li><a href="/blog/irrigation">irrigation</a></li>
+                                    <li><a href="/blog/recycling">recycling</a></li>
+                                    <li><a href="/blog/design">design</a></li>
+                                    <li><a href="/blog/water">water</a></li>
+                                    <li><a href="/blog/living">living</a></li>
+                                </ul>
+                              </li>
+                        </ul>
+                    </div>    
+            </div>
+        </div>
+
+        <%- include('partials/forter.ejs', {socialdatas:socialdatas, contactdatas:contact})-%>
+</body>
+<script src="/script/script.js"></script>
+</html>

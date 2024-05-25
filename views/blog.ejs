@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/clintsideheader.css">
+    <link rel="stylesheet" href="/css/blog.css">
+    <title>Blog</title>
+</head>
+
+<body>
+    <%- include('partials/nav.ejs', {user:authuser})-%>
+        <div id="blogwelcome">
+            <p>🌟 Welcome to our Digital Oasis! 🌟 Here at [Digital Oasis], we believe in the power of words, ideas, and
+                stories. As you step into our virtual realm, you're not just a visitor; you're a cherished guest
+                embarking on a journey of discovery, inspiration, and connection. Our pixels hold the promise of endless
+                exploration, and we invite you to make yourself at home in the boundless world of our blog.</p>
+        </div>
+        <div id="blogcontaner">
+            <div id="blogsection">
+                <div id="blogs">
+                    <% blog.forEach(items=>{ %>
+                        <div class="blog">
+                            <div class="blogitms blogimage"><img class="blogimg" src="<%= items.blogimage %>"
+                                    alt="image"></div>
+                            <div class="glogcontent">
+                                <div class="blogitms">
+                                    <h2 class="blogtitle">
+                                        <%= items.blogtitle %>
+                                    </h2>
+                                </div>
+                                <div class="blogitms">
+                                    <p class="blogdiscription">
+                                        <%= items.blogdiscription.substring(0, 130).concat('...') %>
+                                    </p>
+                                </div>
+                                <div class="blogitms blogspacifications">
+                                    <p class="blogdete blogdata">
+                                        <%= items.blogcreatedAt.toLocaleDateString() %>
+                                    </p>
+                                    <p class="blogsource blogdata">
+                                        <%= items.blogsource %>
+                                    </p>
+                                    <p class="blogdete blogdata">
+                                        <a class="blogmorereed" href="/showblog/<%= items.blogtitle %>">Reed&nbsp;More</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                </div>
+                <hr>
+                <div id="pagination">
+                    <div id="pagination-box">
+                        <% if(pageno> 1){ %>
+                            <div class="pagination-items pagination-btn">
+                                <a href="?page= <%= pageno - 1 %>"><i class="bi bi-arrow-left-short"></i></a>
+                            </div>
+                            <% }%>
+                                <div class="pagination-items pagination-btn" id="pageno">
+                                    <%= pageno %>
+                                </div>
+                                <div class="pagination-items">of <%= totalpages %> pages</div>
+                                <% if(pageno < totalpages){ %>
+                                    <div class="pagination-items pagination-btn">
+                                        <a href="?page= <%= ++pageno %>">
+                                            <i class="bi bi-arrow-right-short"></i>
+                                        </a>
+                                    </div>
+                                    <% }%>
+                    </div>
+                </div>
+            </div>
+            <div id="blogsidebar">
+                <form id="searchsection" method="post">
+                    <input type="search" name="search" id="search" class="search">
+                    <div id="searchicon">
+                        <button class="searchbtn" type="submit"><i class="bi bi-search"></i></button>
+                    </div>
+                </form>
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a href="">category</a>
+                            <ul class="dropdown">
+                                <li><a href="/blog/integration?page=1">integration</a></li>
+                                <li><a href="/blog/ventilation?page=1">ventilation</a></li>
+                                <li><a href="/blog/rainwater?page=1">rainwater</a></li>
+                                <li><a href="/blog/irrigation?page=1">irrigation</a></li>
+                                <li><a href="/blog/recycling?page=1">recycling</a></li>
+                                <li><a href="/blog/design?page=1">design</a></li>
+                                <li><a href="/blog/water?page=1">water</a></li>
+                                <li><a href="/blog/living?page=1">living</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/forter.ejs', {socialdatas:socialdatas, contactdatas:contact})-%>
+</body>
+<script>
+    let pageno = document.getElementById('pageno').value;
+    document.getElementById('searchsection').addEventListener('submit', function (e) {
+        e.preventDefault();
+        pageno = 1;
+        let searchTerm = document.getElementById('search').value;
+        console.log("Page No is this: ", pageno)
+        window.location.href = `/blogsearch/${searchTerm}?page=${pageno}`;
+    });
+</script>
+<script src="/script/script.js"></script>
+</html>

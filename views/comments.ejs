@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/admincss/adminhome.css">
+    <title>Comments</title>
+</head>
+<body>
+    <%- include('./admin/partials/header.ejs')-%>
+    <div id="admincontaner">
+        <div id="contaner">
+            <div class="commentscontaner">
+                <div class="titlesection">latest blog</div>
+                <div id="comments">
+                <table id="blogsection">
+                    <thead class="tableheadings">
+                        <tr>
+                            <th>image</th>
+                            <th>name</th>
+                            <th>comments</th>
+                            <th>blog</th>
+                            <th>image</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablebodycomments">
+                        <% comments.forEach(comment=>{ %>
+                            <tr>
+                                <% const userdata = users.filter(user => user.name === comment.name); %>
+                                <% userdata.forEach(user=>{ %>
+                                    <% if( comment.name === user.name ){ %>
+                                        <td><img class="userimages" src="<%= user.image %>" alt="image"></td>
+                                    <% } %>
+                                <% }); %>
+                                <td><%= comment.name %></td>
+                                <td><%= comment.content %></td>
+                                <% const blogdata = blogs.filter(blog => blog._id.equals(comment.postId)); %>
+                                <% blogdata.forEach(blog=>{ %>
+                                    <td><%= blog.blogtitle %></td>
+                                    <td><img class="blogimages" src="<%= blog.blogimage %>" alt="image"></td>
+                                <% }); %>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/script/adminheader.js"></script>
+</html>

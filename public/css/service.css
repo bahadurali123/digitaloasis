@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#servicesection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#servicesection h2{
+    margin: 5vh 0vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#servicesection p{
+    padding: 2vh 10vh;
+}
+.serviceslist{
+    width: 100%;
+    padding: 2vh 0;
+    margin: 5vh 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.services{
+    width: 100%;
+    margin: 5vh 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.services div{
+    width: 45vw;
+}
+.services div h2{
+    font-size: 18px;
+}
+.services div img{
+    width: 25vw;
+    height: 25vh;
+    padding: 0vh 0vh 0vh 5vh;
+}
+@media (max-width: 600px) {
+    .services{
+        background-color: aqua;
+    }
+    #servicesection p{
+        padding: 2vh 5vh;
+    }
+}
+@media (max-width: 455px) {
+    .services{
+        background-color: #f0f0f0;
+        flex-direction: column;
+    }
+    .services div h2{
+        font-size: 16px;
+    }
+    .services div{
+        width: 80vw;
+    }
+    .services div img{
+        width: 70vw;
+        padding: 0px;
+    }
+    .serviceimg{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #servicesection p{
+        padding: 2vh 3vh;
+    }
+}

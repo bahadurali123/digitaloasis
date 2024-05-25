@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="/css/footer.css">
+<footer>
+        <div id="footerupersection">
+            <div class="footerupersections" id="qlinks">
+                <div>
+                    <p class="topicheadings">QUICK&nbsp;LINKS!</p>
+                </div>
+                <div id="qlinkslist">
+                    <a href="/../">Home</a>
+                    <a href="/../services">Services</a>
+                    <a href="/../blog">Blog</a>
+                    <a href="/../contact">Contact</a>
+                </div>
+            </div>
+            <div class="footerupersections" id="logo"><img src="/images/logo.png" alt="image"></div>
+            <div class="footerupersections contactsection">
+                <p class="topicheadings">CONTACT&nbsp;INFORMATION</p>
+                <div id="contact">
+                    <% contactdatas.forEach(items=>{%>
+                        <!-- <a href="" target="_blank" rel="noopener noreferrer"></a> -->
+                        <div class="contactitems"><%- items.contactimage %> <a href="<%= items.contacturl %>">
+                                    <%= items.contacttextadderss %>
+                                </a></div>
+                        <% });%>
+                </div>
+            </div>
+        </div>
+        <div id="footerlowersection">
+            <p id="rights">All Right Resereved | Innovating Solutions for a Connected World</p>
+            <div id="social">
+                <!-- html data store in DB and retrive is not good practice because (XSS) html renden in your database and effect it -->
+                <% socialdatas.forEach(items=>{%>
+                    <a href="<%= items.socialurl%>" target="_blank" rel="noopener noreferrer"><%- items.socialimage %></a>
+                    <% });%>
+            </div>
+        </div>
+    </footer>

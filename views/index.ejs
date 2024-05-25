@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/clintsideheader.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- <script src="/script/script.js"></script> -->
+    <title>home</title>
+</head>
+
+<body>
+    <!-- <header> -->
+    <%- include('partials/nav.ejs', {user:authuser})-%>
+        <!-- </header> -->
+        <div id="coversection">
+            <img id="coverimg"
+                src="https://alcorfund.com/wp-content/uploads/2020/09/Technical-Innovation-defination.png" alt="img">
+            <!-- <img id="coverimg" src="https://timess3spore.s3.amazonaws.com/ndata/et_images/desktop_image_webp/ba24d6222f4a81609f28391a61e8556cthumbnail_AI-Portal-pic.webp" alt="img"> -->
+            <h3 id="heading">Transforming Ideas into Reality</h3>
+        </div>
+        <hr>
+        <div id="aboutdata">
+            <div id="subtitle">
+                <div>
+                    <h3 class="Introduction " id="hi">Hi</h3>
+                    <p class="Introduction">Welcome to Digital Oasis, where innovation
+                        meets excellence. We are a team of passionate professionals dedicated to creating solutions that
+                        make a difference.</p>
+
+                </div>
+                <div>
+                    <img id="logo" src="/images/logo.png" alt="img">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="valuessection">
+            <h3 id="values">Values</h3>
+            <div id="valuesitemssection">
+                <div class="valuesitems">
+                    <img class="Valuesimg"
+                        src="https://cdn.vectorstock.com/i/preview-1x/17/94/integrity-glyph-icon-on-white-background-vector-48991794.webp"
+                        alt="">
+                    <p>Integrity</p>
+                </div>
+                <div class="valuesitems">
+                    <img class="Valuesimg"
+                        src="https://alcorfund.com/wp-content/uploads/2020/09/Technical-Innovation-defination.png"
+                        alt="">
+                    <p>Innovation</p>
+                </div>
+                <div class="valuesitems">
+                    <img class="Valuesimg" src="https://cdn-icons-png.flaticon.com/512/809/809522.png" alt="">
+                    <p>Collaboration</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="teamsection">
+            <div id="teamheadings">
+                <h3 class="team">Team</h3>
+                <p class="teamsentence">Meet the Experts Behind [Digital Oasis]</p>
+            </div>
+            <div id="teamitemsection">
+                <% data.forEach(member=> { %>
+                    <div class="teamitems">
+                        <img class="items teamimg" src="<%= member.teamimage %>" alt="<%= member.teamname %>">
+                        <h2 class="items name">
+                            <%= member.teamname %>
+                        </h2>
+                        <p class="items teamabout">
+                            <%= member.teamdiscription %>
+                        </p>
+                    </div>
+                    <% }); %>
+                        
+            </div>
+        </div>
+        <hr>
+        <%- include('partials/forter.ejs', {socialdatas:socialdatas, contactdatas:contact})-%>
+</body>
+<script src="/script/script.js"></script>
+</html>

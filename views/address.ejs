@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/admincss/social.css">
+    <title>Edit Address</title>
+</head>
+<body>
+    <%- include('./admin/partials/header.ejs')-%>
+    <div class="contaner">
+        <div class="contactlist">
+            <!-- <div class="socialitems">
+                <a class="btn add" href=""><i class="bi bi-plus"></i></a>
+            </div> -->
+            <h2>Address</h2>
+            <% saveaddres.forEach(address=>{ %>
+                <div class="address-container">
+                    <div class="addressitems">Address:</div>
+                    <div class="addressitems"><%= address.address %></div>
+                    <div class="addressitems">URL:</div>
+                    <div class="addressitems"><a href="<%= address.addresurl %>" target="_blank">Click and get address</a></div>
+                    <div class="addressitems">Image:</div>
+                    <div class="icon addressitems"><%- address.addresimage %></div>
+                </div>
+                <% }); %>
+            </div>
+            <form class="contactform" action="/admin/address" method="post">
+            <h3 class="formitems">Edit Your Address</h3>
+            <p class="formitems">Address</p>
+            <input class="formitems" type="text" name="address" value="<%= saveaddres[0].address %>" id="" autocomplete="off" required>
+            <p class="formitems">URL</p>
+            <textarea class="formitems" name="addresurl" id="" autocomplete="off" required><%= saveaddres[0].addresurl %></textarea>
+            <p class="formitems">Image from bootstrap</p>
+            <input class="formitems" type="text" name="addresimage" value="<%= saveaddres[0].addresimage %>" autocomplete="off" required>
+            <button class="formitems subbtn" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+<script src="/script/adminheader.js"></script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/clintsideheader.css">
+    <link rel="stylesheet" href="/css/form.css">
+    <title>Login</title>
+</head>
+<body>
+
+    <div class="form">
+        <h3 class="h3">Login Now at Digital Oasis.</h3>
+        <% if(message){ %>
+            <p class="error">"<%= message %>"</p>
+        <% } %>
+        <form action="/userlogin" onsubmit="return submet()" class="" method="post">
+            <div id="itemsection">
+                <div class="items">
+                    <span>Email:</span>
+                <input type="email" placeholder="Email" name="email" class="inputs" id="email" autocomplete="on">
+                </div>
+                <div class="items">
+                    <span>Password:</span>
+                <input type="password" placeholder="Password" name="password" class="inputs" id="password" autocomplete="on">
+                </div>
+            </div>
+            <button type="submit" class="subbtn" id="btn">Submet</button>
+            <div id="loginmessage"><p>Please <a href="/userregister">register</a> if you don't have an account.</p></div>
+        </form>
+    </div>
+</body>
+<script src="/script/script.js"></script>
+</html>

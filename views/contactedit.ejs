@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/admincss/social.css">
+    <title>Contact Edit</title>
+</head>
+<body>
+    <!-- social Edit-->
+<div class="contaner">
+    <form class="contactform" action="" method="post">
+        <h3 class="formitems">Contact Edit</h3>
+        <p class="formitems">Icon from Bootstrap</p>
+        <input class="formitems" type="text" name="icon" value="<%= contact.contactimage %>" id="" autocomplete="off" required>
+        <p class="formitems">URL</p>
+        <input class="formitems" type="text" name="url" value="<%= contact.contacturl %>" id="" autocomplete="off" required>
+        <p class="formitems">you wnt to see</p>
+        <input class="formitems" type="text" name="content" value="<%= contact.contacttextadderss %>" autocomplete="off" required>
+        <button class="formitems subbtn" type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
