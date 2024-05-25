@@ -14,7 +14,7 @@ const Comment = require("../moduls/commentschema");
 const user = require("../moduls/userschema");
 const like = require("../moduls/likeschema");
 const addresdata = require("../moduls/addresschema");
-const uploadoncloudinary = require("../utilitys/cloudinary");
+const { uploadBufferToCloudinary } = require("../utilitys/cloudinary");
 
 
 routs.get("/", async (req, res) => {
@@ -252,14 +252,24 @@ routs.post('/userregister', async (req, res) => {
         const { name, email, password } = req.body;
         let isError = false; // Variable to track errors
         console.log("0 Path:", name, email, password)
-        const userlocalpath = req.file.path;
-        console.log("Path:", userlocalpath)
+
+        // .....diskStorage.....
+        // const userlocalpath = req.file.path;
+        // console.log("Path:", userlocalpath)
+        // .....memoryStorage.....
+        const fileBuffer = req.file.buffer;
+        // console.log("File buffer:", fileBuffer);
+
         // .....File validation.....
-        if (!userlocalpath) {
-            console.log("File is incorrect:");
+        if (!fileBuffer) {
+            console.log("File buffer is incorrect:");
             isError = true;
         }
-        const image = await uploadoncloudinary(userlocalpath);
+        
+        // .....diskStorage.....
+        // const image = await uploadoncloudinary(userlocalpath);
+        // .....memoryStorage.....
+        const image = await uploadBufferToCloudinary(fileBuffer);
         
         // .....First Namd validation.....
         if ((name == "" || (!isNaN(name))) || (name.length > 20 || name.length < 4)) {
@@ -298,7 +308,7 @@ routs.post('/userregister', async (req, res) => {
                 name: name,
                 email: email,
                 password: password,
-                image: image.url
+                image: image.secure_url
             });
             const token = userdata.userauthanticat();
             res.cookie("digital_oasis", token, {
