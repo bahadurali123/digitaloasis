@@ -26,7 +26,7 @@ app.use(cookieparser());
 
 
 // This is the static path of this website
-const staticpath = path.join(__dirname, "/public");
+const staticpath = path.join(__dirname, "public");
 console.log("Static Path:", staticpath);
 app.use(express.static(staticpath));
 
