@@ -311,6 +311,7 @@ routs.post('/userregister', async (req, res) => {
                 password: password,
                 image: image.secure_url
             });
+            console.log("Data before save", userdata);
             const token = userdata.userauthanticat();
             res.cookie("digital_oasis", token, {
                 // expires: new Date(Date.now() + 990000),
